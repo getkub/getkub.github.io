@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html ng-app="NRECalc">
+
+<head>
+  <meta charset="utf-8" />
+  <title>NRO NRE FCNR Calculator (www.diaryfolio.com)</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.js"></script>
+  <script src="app.js"></script>
+
+</head>
+
+<body>
+  <form name="NREForm" ng-controller="NRECalcCtrl">
+    <div class="row">
+      <div class="col-xs-3">
+        <label class="control-label">Currency</label>
+      </div>
+      <div class="col-xs-3">
+        <label class="control-label">Amount</label>
+      </div>
+      <div class="col-xs-3">
+        <label class="control-label">Time (Months)</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-3">
+        <select class="form-control form-group" id="curCode" ng-model="selectCUR" ng-options="curCode for curCode in curCodes">
+        </select>
+      </div>
+      <div class="col-xs-3">
+        <input type="number" id="curAmount" class="form-control form-group has-error" placeholder="1000" ng-model="frm.curAmount" min="0" max="999999" required>
+      </div>
+      <div class="col-xs-3">
+        <input type="number" id="timeMonths" class="form-control" placeholder="36" ng-model="frm.timeMonths" min="0" max="120" required>
+      </div>
+    </div>
+
+
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="inputXchange" class="col-xs-5 control-label">Input Exchange Rate</label>
+        <div class="col-xs-3">
+          <input type="number" class="form-control" id="inputXchange" placeholder="60" ng-model="frm.inputXchange" min="0" max="199" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail3" class="col-xs-5 control-label">Withdraw Exchange Rate</label>
+        <div class="col-xs-3">
+          <input type="number" class="form-control" id="outputXchange" placeholder="62" ng-model="frm.outputXchange" min="0" max="299" required>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>NRO</th>
+          <th>NRE</th>
+          <th>FCNR(B)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-xs-4">APR% (Interest)</td>
+          <td>
+            <input type="number" id="nro_apr" class="form-control" placeholder="8.25" ng-model="frm.nro_apr" min="0" max="20" required>
+          </td>
+          <td>
+            <input type="number" id="nre_apr" class="form-control" placeholder="8.000" ng-model="frm.nre_apr" min="0" max="20" required>
+          </td>
+          <td>
+            <input type="number" id="fcr_apr" class="form-control" placeholder="3.50" ng-model="frm.fcr_apr" min="0" max="20" required>
+          </td>
+        </tr>
+        <tr>
+          <td>Tax (%)</td>
+          <td>
+            <input type="number" id="nro_int" class="form-control" placeholder="10.50" ng-model="frm.nro_int" min="0" max="60" required>
+          </td>
+          <td>
+            <input type="number" id="nre_int" class="form-control" placeholder="0" ng-model="frm.nre_int" min="0" max="60" required>
+          </td>
+          <td>
+            <input type="number" id="fcr_int" class="form-control" placeholder="0" ng-model="frm.fcr_int" min="0" max="60" required>
+          </td>
+        </tr>
+        <tr>
+          <td>Final Amount (INR)</td>
+          <td>{{getValues("nro").finalAmountINR}}</td>
+          <td>{{getValues("nre").finalAmountINR}}</td>
+          <td>{{getValues("fcr").finalAmountINR}}</td>
+        </tr>
+        <tr>
+          <td>Final Amount ({{selectCUR}})</td>
+          <td>{{getValues("nro").finalAmountCUR}}</td>
+          <td>{{getValues("nre").finalAmountCUR}}</td>
+          <td>{{getValues("fcr").finalAmountCUR}}</td>
+        </tr>
+        <tr id="finalProfit">
+          <td>Final Profit ({{selectCUR}})</td>
+          <td>{{getValues("nro").finalProfitCUR}}</td>
+          <td>{{getValues("nre").finalProfitCUR}}</td>
+          <td>{{getValues("fcr").finalProfitCUR}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </form>
+</body>
+
+</html>
+
