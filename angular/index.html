@@ -42,13 +42,13 @@
 
     <div class="form-horizontal">
       <div class="form-group">
-        <label for="inputXchange" class="col-xs-5 control-label">Input Exchange Rate</label>
+        <label for="inputXchange" class="col-xs-5 control-label">Input Exchange Rate ({{selectCUR}}/INR)</label>
         <div class="col-xs-3">
           <input type="number" class="form-control" id="inputXchange" placeholder="60" ng-model="frm.inputXchange" min="0" max="199" required>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputEmail3" class="col-xs-5 control-label">Withdraw Exchange Rate</label>
+        <label for="outputXchange" class="col-xs-5 control-label">Withdraw Exchange Rate ({{selectCUR}}/INR)</label>
         <div class="col-xs-3">
           <input type="number" class="form-control" id="outputXchange" placeholder="62" ng-model="frm.outputXchange" min="0" max="299" required>
         </div>
