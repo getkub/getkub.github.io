@@ -63,6 +63,7 @@
           <th>NRO</th>
           <th>NRE</th>
           <th>FCNR(B)</th>
+          <th>Within Country</th>
         </tr>
       </thead>
       <tbody>
@@ -77,6 +78,9 @@
           <td>
             <input type="number" id="fcr_apr" class="form-control" placeholder="3.50" ng-model="frm.fcr_apr" min="0" max="20" required>
           </td>
+          <td>
+            <input type="number" id="non_apr" class="form-control" placeholder="1.50" ng-model="non.fcr_apr" min="0" max="20" required>
+          </td>
         </tr>
         <tr>
           <td>Tax (%)</td>
@@ -89,11 +93,15 @@
           <td>
             <input type="number" id="fcr_int" class="form-control" placeholder="0" ng-model="frm.fcr_int" min="0" max="60" required>
           </td>
+          <td>
+            <input type="number" id="non_int" class="form-control" placeholder="0" ng-model="frm.non_int" min="0" max="60" required>
+          </td>
         </tr>
         <tr>
           <td>Final Amount (INR)</td>
           <td>{{getValues("nro").finalAmountINR}}</td>
           <td>{{getValues("nre").finalAmountINR}}</td>
+          <td>NA</td>
           <td>NA</td>
         </tr>
         <tr>
@@ -101,12 +109,14 @@
           <td>{{getValues("nro").finalAmountCUR}}</td>
           <td>{{getValues("nre").finalAmountCUR}}</td>
           <td>{{getValues("fcr").finalAmountOWN}}</td>
+          <td>{{getValues("non").finalAmountOWN}}</td>
         </tr>
         <tr id="finalProfit">
           <td>Final Profit ({{selectCUR}})</td>
           <td><b>{{getValues("nro").finalProfitCUR}}</b></td>
           <td><b>{{getValues("nre").finalProfitCUR}}</b></td>
           <td><b>{{getValues("fcr").finalProfitOWN}}</b></td>
+          <td><b>{{getValues("non").finalProfitOWN}}</b></td>
         </tr>
       </tbody>
 
