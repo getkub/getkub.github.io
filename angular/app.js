@@ -36,6 +36,7 @@ app.controller('NRECalcCtrl', ['$scope', '$parse',
       finalAmountOWN = Math.round(curAmount * compFactor);
       finalAmountCUR = Math.round(finalAmountINR / outputXchange);
       finalProfitCUR = Math.round(finalAmountCUR - curAmount);
+      finalProfitOWN = Math.round(finalAmountOWN - curAmount);
       return {
         finalAmountINR: finalAmountINR,
         finalAmountCUR: finalAmountCUR,
