@@ -41,6 +41,7 @@ app.controller('NRECalcCtrl', ['$scope', '$parse',
         finalAmountINR: finalAmountINR,
         finalAmountCUR: finalAmountCUR,
         finalAmountOWN: finalAmountOWN,
+        finalProfitOWN: finalProfitOWN,
         finalProfitCUR: finalProfitCUR
       };
     };
