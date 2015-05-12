@@ -23,7 +23,7 @@ app.controller('NRECalcCtrl', ['$scope', '$parse',
  
     $scope.getValues = function(accType) {
       var APR, tax, netAPR, curAmount, inputXchange, outputXchange, timeYear, curCode;
-      var finalAmountINR, finalAmountCUR, finalProfitCUR;
+      var finalAmountINR, finalAmountCUR, finalProfitCUR, finalAmountOWN;
       curAmount = $scope.frm.curAmount;
       inputXchange = $scope.frm.inputXchange;
       outputXchange = $scope.frm.outputXchange;
@@ -33,11 +33,13 @@ app.controller('NRECalcCtrl', ['$scope', '$parse',
       netAPR = APR - tax;
       var compFactor = Math.pow(1 + netAPR / 100, timeYear);
       finalAmountINR = Math.round(curAmount * inputXchange * compFactor);
+      finalAmountOWN = Math.round(curAmount * compFactor);
       finalAmountCUR = Math.round(finalAmountINR / outputXchange);
       finalProfitCUR = Math.round(finalAmountCUR - curAmount);
       return {
         finalAmountINR: finalAmountINR,
         finalAmountCUR: finalAmountCUR,
+        finalAmountOWN: finalAmountOWN,
         finalProfitCUR: finalProfitCUR
       };
     };
