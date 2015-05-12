@@ -16,9 +16,11 @@ app.controller('NRECalcCtrl', ['$scope', '$parse',
       nro_apr: 8.25,
       nre_apr: 8.00,
       fcr_apr: 3.25,
+      non_apr: 1.50,
       nro_int: 15,
       nre_int: 0,
-      fcr_int: 0
+      fcr_int: 0,
+      non_int: 0
     };
  
     $scope.getValues = function(accType) {
